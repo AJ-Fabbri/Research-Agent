@@ -1,0 +1,43 @@
+model:
+  default: claude-sonnet-4-6          # API model (Anthropic/OpenAI)
+  local: local                         # Name shown in logs; can match LM Studio model name
+  # Optional: use a local OpenAI-compatible server (no Ollama required)
+  # LM Studio: start the server in LM Studio, then set:
+  #   local_base_url: http://localhost:1234/v1
+  #   local_api_key: lm-studio          # or any placeholder
+  # Ollama: set OPENAI_BASE_URL=http://localhost:11434/v1 and use local: ollama/<name>
+  local_base_url: http://127.0.0.1:1234/v1
+  local_api_key: lm-studio
+  privacy_mode: false                  # true = force local-only
+  routing: local                       # auto | api | local
+
+mode:
+  default: autonomous                 # autonomous | checkpoint
+
+data_sources:
+  web_search: true
+  financial_apis:
+    yfinance: true
+    alpha_vantage_key: ${ALPHA_VANTAGE_KEY}
+    bloomberg_key: ${BLOOMBERG_KEY}
+  documents:
+    ingest_path: ./documents
+    vector_store: ./chroma_db
+  repo:
+    root: ./                          # Scoped filesystem access
+
+output:
+  default_format: auto                # auto | memo | direct | matrix
+  save_path: ./outputs
+  export_docx: true
+
+agent:
+  max_steps: 25
+  log_reasoning_trace: true
+  db_path: aria_research.db            # SQLite database for session history and outcomes
+
+monitor:
+  enabled: true
+  interval_hours: 168                  # 168 = weekly
+  discord_webhook: ${DISCORD_WEBHOOK}  # set in environment or replace with your webhook URL
+  notify_on: challenged                # challenged | all
