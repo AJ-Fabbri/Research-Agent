@@ -14,6 +14,12 @@ ARIA is a research tool. Nothing it produces is investment advice. All memos are
 
 ---
 
+### Agent Workflow Diagram
+
+<img width="799" height="870" alt="Screenshot 2026-03-24 at 9 32 08 PM" src="https://github.com/user-attachments/assets/00573ce6-29dd-4d7a-bcc8-d016d37069b2" />
+
+---
+
 ## What is ARIA?
 
 ARIA is an AI-powered research tool built around one principle: **good research means being willing to be wrong.**
